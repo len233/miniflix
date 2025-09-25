@@ -147,3 +147,27 @@ body.sepia-mode .menu-toggle span { background-color: var(--text-sepia); }
   background: #e50914;
   border-radius: 50%;
 }
+
+.notification-bell {
+  position: relative;
+}
+
+.notification-list {
+  position: fixed;
+  left: auto;
+  right: 32px; /* Ajuste selon la position de ta cloche */
+  top: 70px;   /* Ajuste selon la hauteur de ton header */
+  min-width: 260px;
+  background: #222;
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  padding: 0.5rem 0;
+  z-index: 9999;
+  border: 1px solid #333;
+  animation: fadeInNotif 0.3s;
+}
+@keyframes fadeInNotif {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
