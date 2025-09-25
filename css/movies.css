@@ -1,3 +1,46 @@
+/* Flèches SVG top plus visibles */
+.arrow-btn {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: none;
+  border: none;
+  box-shadow: 0 2px 8px rgba(221,36,118,0.13);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.18s, box-shadow 0.18s;
+  outline: none;
+}
+.arrow-btn svg {
+  width: 44px;
+  height: 44px;
+  display: block;
+}
+.arrow-btn:focus,
+.arrow-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 4px 16px rgba(221,36,118,0.18);
+}
+/* Numérotation des films top */
+.movie-rank {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  z-index: 2;
+}
 .section-title {
   padding: 20px 40px 10px;
   font-size: 1.5rem;
@@ -19,12 +62,16 @@
   padding: 10px 40px 30px;
   gap: 15px;
   scroll-behavior: smooth;
+  max-width: 90vw;
+  margin: 0 auto;
 }
-.movies-row::-webkit-scrollbar { 
-  height: 8px; 
+
+.movies-row::-webkit-scrollbar {
+  height: 8px;
+  width: 80%;
 }
-.movies-row::-webkit-scrollbar-track { 
-  background: rgba(255,255,255,0.1);
+.movies-row::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.0); /* transparent */
   border-radius: 10px;
 }
 
@@ -37,7 +84,7 @@ body.sepia-mode .movies-row::-webkit-scrollbar-track {
 }
 
 .movies-row::-webkit-scrollbar-thumb {
-  background: var(--primary-color);
+  background: rgba(255, 255, 255, 0.421); /* gris très léger et transparent */
   border-radius: 10px;
 }
 
@@ -96,9 +143,6 @@ body.sepia-mode .movie-card img {
 .movie-card:hover {
   transform: translateY(-10px) scale(1.03);
   z-index: 10;
-}
-.movie-card:hover img { 
-  opacity: 0.7; 
 }
 
 .favorite-btn {

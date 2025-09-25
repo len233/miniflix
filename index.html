@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AniX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/header.css">
@@ -88,27 +91,52 @@
 
       <section id="searchResultsSection" style="display:none;">
         <div class="section-title">
-          <h2>Résultats de recherche</h2>
+          <h2><span style="font-size:2.1rem;vertical-align:middle;">🔎</span> <span style="background:linear-gradient(90deg,#36d1c4,#2b5876);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:900;">Résultats de recherche</span></h2>
         </div>
         <div class="movies-row" id="searchResultsRow"></div>
       </section>
 
       <section>
         <div class="section-title">
-          <h2>Populaires</h2>
-          <span class="view-all" role="button" tabindex="0">Tout voir</span>
+          <h2><span style="font-size:2.3rem;vertical-align:middle;">🔥</span> <span style="background:linear-gradient(90deg,#ff512f,#dd2476);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-fill-color:transparent;font-weight:900;">Top 10 du moment</span></h2>
         </div>
-        <div class="movies-row" id="topMoviesRow">
-          <div class="loading">
-            <div class="spinner"></div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <button id="topLeftArrow" class="arrow-btn" aria-label="Défiler à gauche">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="14" cy="14" r="14" fill="url(#leftGradient)"/>
+              <path d="M17 9L12 14L17 19" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <defs>
+                <linearGradient id="leftGradient" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#ff512f"/>
+                  <stop offset="1" stop-color="#dd2476"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </button>
+          <div class="movies-row" id="topMoviesRow" style="overflow-x:hidden;">
+            <div class="loading">
+              <div class="spinner"></div>
+            </div>
           </div>
+          <button id="topRightArrow" class="arrow-btn" aria-label="Défiler à droite">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="14" cy="14" r="14" fill="url(#rightGradient)"/>
+              <path d="M11 9L16 14L11 19" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <defs>
+                <linearGradient id="rightGradient" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#ff512f"/>
+                  <stop offset="1" stop-color="#dd2476"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </button>
         </div>
       </section>
 
       <section>
         <div class="section-title">
-          <h2>Action</h2>
-          <span class="view-all" role="button" tabindex="0">Tout voir</span>
+          <h2><span style="font-size:2.1rem;vertical-align:middle;">💥</span> <span style="background:linear-gradient(90deg,#ff512f,#f09819);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:900;">Action</span></h2>
+          <span id="loadMoreActionBtn" class="view-all" role="button" tabindex="0">Voir plus</span>
         </div>
         <div class="movies-row" id="actionMoviesRow">
           <div class="loading">
@@ -119,8 +147,8 @@
 
       <section>
         <div class="section-title">
-          <h2>Comédie & Romance</h2>
-          <span class="view-all" role="button" tabindex="0">Tout voir</span>
+          <h2><span style="font-size:2.1rem;vertical-align:middle;">💖</span> <span style="background:linear-gradient(90deg,#f857a6,#ff5858);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:900;">Comédie & Romance</span></h2>
+          <span id="loadMoreComedyBtn" class="view-all" role="button" tabindex="0">Voir plus</span>
         </div>
         <div class="movies-row" id="comedyMoviesRow">
           <div class="loading">
@@ -131,8 +159,8 @@
 
       <section>
         <div class="section-title">
-          <h2>Science-Fiction</h2>
-          <span class="view-all" role="button" tabindex="0">Tout voir</span>
+          <h2><span style="font-size:2.1rem;vertical-align:middle;">🚀</span> <span style="background:linear-gradient(90deg,#43cea2,#185a9d);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:900;">Science-Fiction</span></h2>
+          <span id="loadMoreScifiBtn" class="view-all" role="button" tabindex="0">Voir plus</span>
         </div>
         <div class="movies-row" id="scifiMoviesRow">
           <div class="loading">
@@ -140,11 +168,21 @@
           </div>
         </div>
       </section>
+
+      <!-- Section Animation -->
+      <section>
+        <div class="section-title">
+          <h2><span style="font-size:2.1rem;vertical-align:middle;">🎬</span> <span style="background:linear-gradient(90deg,#f7971e,#ffd200);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:900;">Films d'animation</span></h2>
+          <span id="loadMoreAnimationBtn" class="view-all" role="button" tabindex="0">Voir plus</span>
+        </div>
+        <div class="movies-row" id="animationMoviesRow"></div>
+      </section>
+      <!-- Fin Section Animation -->
     </div>
 
     <div class="favorites-page" id="favoritesPage">
       <div class="section-title">
-        <h2>Mes Favoris</h2>
+  <h2><span style="font-size:2.1rem;vertical-align:middle;">❤️</span> <span style="background:linear-gradient(90deg,#ff5858,#f857a6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:900;">Mes Favoris</span></h2>
       </div>
       <div class="favorites-grid" id="favoritesGrid">
         <p style="grid-column: 1/-1; text-align: center; padding: 40px;">Aucun film favori pour le moment</p>
