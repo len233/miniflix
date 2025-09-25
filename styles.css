@@ -228,12 +228,14 @@ body.light-mode .profile-menu li:hover { background-color: rgba(0, 0, 0, 0.1); }
   font-size: clamp(2rem, 5vw, 3rem);
   margin-bottom: 20px;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  color: #fff !important;
 }
 
 .hero-description {
   font-size: clamp(1rem, 2vw, 1.2rem);
   margin-bottom: 30px;
   line-height: 1.5;
+  color: #fff !important;
 }
 
 .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
