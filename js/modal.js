@@ -1,10 +1,11 @@
-// Modal avec aria-hidden dynamique
+// Gestion de la fenêtre modale pour les détails du film
 async function showModal(id){
   try{
     const movie = allMovies[id];
     const detailsRes = await fetch(`${BASE_URL}/movie/${id}?language=fr-FR&append_to_response=credits,videos`,options);
     const details = await detailsRes.json();
 
+    // Vidéo ou image
     let trailer=details.videos.results.find(v=>v.type==="Trailer"&&v.site==="YouTube");
     let mediaContent=trailer? `<iframe src="https://www.youtube.com/embed/${trailer.key}?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>`
                               : `<img src="${movie.backdrop_path?IMAGE_BASE_URL+movie.backdrop_path:IMAGE_BASE_URL+movie.poster_path}" alt="${movie.title}">`;
@@ -15,6 +16,7 @@ async function showModal(id){
       <div class="modal-header">${mediaContent}
         <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
       </div>
+      // Corps de la modale
       <div class="modal-body">
         <h2>${movie.title}</h2>
         <div class="modal-meta">

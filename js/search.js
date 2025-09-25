@@ -19,6 +19,7 @@ document.getElementById('searchInput').addEventListener('input', e => {
   searchTimeout = setTimeout(() => searchMovies(query), 400);
 });
 
+// Bouton pour effacer la recherche
 document.getElementById('clearSearchBtn').addEventListener('click', function(e) {
   e.preventDefault();
   const input = document.getElementById('searchInput');
@@ -29,6 +30,7 @@ document.getElementById('clearSearchBtn').addEventListener('click', function(e) 
   input.focus();
 });
 
+// Recherche de films via l'API
 async function searchMovies(query) {
   try {
     document.getElementById('homePage').querySelectorAll('section:not(#searchResultsSection)').forEach(s => s.style.display = 'none');

@@ -1,7 +1,8 @@
 // Chargement des films depuis l'API
-async function fetchMovies(endpoint, rowId, pages = 3) {
+async function fetchMovies(endpoint, rowId, pages = 3) { // Par défaut, charge 3 pages
   try {
     let allResults = [];
+    // Boucle pour charger plusieurs pages
     for (let page = 1; page <= pages; page++) {
       const url = `${BASE_URL}${endpoint}${endpoint.includes('?') ? '&' : '?'}page=${page}&language=fr-FR`;
       const res = await fetch(url, options);
@@ -17,11 +18,12 @@ async function fetchMovies(endpoint, rowId, pages = 3) {
   }
 }
 
+// Ajoute les films à une ligne spécifique 
 function addMoviesToRow(moviesList,rowId){
   const row=document.getElementById(rowId);
   row.innerHTML='';
   moviesList.forEach(movie=>{
-    allMovies[movie.id]=movie;
+    allMovies[movie.id]=movie; // Met à jour le cache global
     const isFavorite=favorites.includes(movie.id);
     const card=document.createElement('div'); card.className='movie-card';
     card.innerHTML=`<img src="${movie.poster_path?IMAGE_BASE_URL+movie.poster_path:'https://via.placeholder.com/300x450?text=Image+non+disponible'}" alt="${movie.title}" loading="lazy">
@@ -35,12 +37,12 @@ function addMoviesToRow(moviesList,rowId){
           <span>${(movie.release_date||"").split("-")[0]}</span>
         </div>
       </div>`;
-    card.addEventListener('click', e=>{ if(!e.target.closest('.favorite-btn')) showModal(movie.id); });
+    card.addEventListener('click', e=>{ if(!e.target.closest('.favorite-btn')) showModal(movie.id); }); // Ouvre la modale sauf si le clic est sur le bouton favori
     row.appendChild(card);
   });
 }
 
-// Exemple : notification lors de la sortie d'un nouveau film
+// Notification d'un nouveau film 
 function notifyNewMovie(movie) {
   if (typeof showNotification === 'function') {
     showNotification(`Nouveau film disponible : ${movie.title}`, 'info');

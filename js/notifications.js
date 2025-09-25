@@ -2,7 +2,6 @@
 const notificationBell = document.getElementById('notificationBell');
 const notifBadge = document.getElementById('notifBadge');
 
-// Création de la liste de notifications
 let notifList = document.createElement('div');
 notifList.className = 'notification-list';
 document.body.appendChild(notifList);
@@ -20,6 +19,7 @@ function formatDate(date) {
   });
 }
 
+// Met à jour l'interface des notifications
 function updateNotifUI() {
   notifBadge.style.display = notifications.length ? 'inline-block' : 'none';
   notifBadge.textContent = notifications.length;
@@ -36,7 +36,7 @@ function updateNotifUI() {
       </div>`
     ).join('');
   }
-  notifList.style.display = 'none'; // Toujours masqué par défaut
+  notifList.style.display = 'none'; 
 }
 
 notifList.addEventListener('click', function(e) {
@@ -49,6 +49,7 @@ notifList.addEventListener('click', function(e) {
   }
 });
 
+// Affiche ou masque la liste des notifications au clic sur la cloche
 if (notificationBell) {
   notificationBell.addEventListener('click', function(e) {
     e.stopPropagation();
@@ -65,10 +66,6 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Initialisation de l'affichage de la liste au chargement
+
 updateNotifUI();
 
-// Exemple d'utilisation :
-// showNotification('Nouveau film disponible !', 'info');
-// showNotification('Ajouté aux favoris', 'success');
-// showNotification('Erreur lors de la recherche', 'error');

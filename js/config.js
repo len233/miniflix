@@ -1,9 +1,9 @@
 // Configuration et variables globales
 const BASE_URL = "https://api.themoviedb.org/3";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
-const CACHE_DURATION = 30 * 60 * 1000; // 30 minutes en millisecondes
+const CACHE_DURATION = 30 * 60 * 1000; 
 const MAX_RETRIES = 3;
-const RETRY_DELAY = 1000; // 1 seconde
+const RETRY_DELAY = 1000; 
 
 const options = { 
   method: "GET", 
@@ -16,7 +16,7 @@ const options = {
 // Cache et état global
 let allMovies = {};
 let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-let currentTheme = 'dark'; // 'dark', 'light', 'sepia'
+let currentTheme = 'dark'; 
 let cache = new Map();
 
 // Gestion du cache
@@ -27,9 +27,12 @@ const setCacheItem = (key, data) => {
     timestamp: Date.now()
   });
 };
+
+// Récupère un élément du cache s'il est encore valide
 const getCacheItem = (key) => {
   const item = cache.get(key);
-  if (!item) return null;
+  if (!item) return null; 
+  // Vérifie la validité du cache
   if (Date.now() - item.timestamp > CACHE_DURATION) {
     cache.delete(key);
     return null;

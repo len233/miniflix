@@ -4,6 +4,7 @@ function toggleFavorite(id, event){
   favorites = favorites.includes(id) ? favorites.filter(fav=>fav!==id) : [...favorites,id];
   localStorage.setItem('favorites', JSON.stringify(favorites));
   
+  // Mise à jour des boutons
   if(event){
     if(event.target.classList.contains('favorite-toggle-btn')){
       event.target.classList.toggle('active');
@@ -32,6 +33,7 @@ function displayFavorites(){
   }
   grid.innerHTML='';
   favorites.forEach(id=>{
+    // Récupère les informations du film à partir du cache
     const movie = allMovies[id]; if(!movie) return;
     const card = document.createElement('div'); card.className='movie-card';
     card.innerHTML=`<img src="${movie.poster_path?IMAGE_BASE_URL+movie.poster_path:'https://via.placeholder.com/300x450?text=Image+non+disponible'}" alt="${movie.title}">
