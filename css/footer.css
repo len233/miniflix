@@ -29,9 +29,4 @@ body {
     border-top: 1px solid var(--border-color);
 }
 
-@media (max-width: 768px) {
-    .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-}
+
