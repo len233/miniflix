@@ -62,17 +62,37 @@ const BASE_URL = "https://api.themoviedb.org/3";
 
     // Recherche avec debounce
     let searchTimeout;
-    document.getElementById('searchInput').addEventListener('input', e=>{
+
+    document.getElementById('searchInput').addEventListener('input', e => {
       clearTimeout(searchTimeout);
-      searchTimeout = setTimeout(()=> filterMovies(e.target.value), 300);
+      const query = e.target.value.trim();
+      if (query.length < 2) {
+        document.getElementById('searchResultsSection').style.display = 'none';
+        document.getElementById('homePage').querySelectorAll('section:not(#searchResultsSection)').forEach(s => s.style.display = '');
+        return;
+      }
+      searchTimeout = setTimeout(() => searchMovies(query), 400);
     });
 
-    function filterMovies(query){
-      const q = query.toLowerCase().trim();
-      document.querySelectorAll('.movie-card').forEach(card=>{
-        const title = card.querySelector('.movie-title').textContent.toLowerCase();
-        card.style.display = (q.length<2 || title.includes(q))?'block':'none';
-      });
+    async function searchMovies(query) {
+      try {
+        // Masquer les autres sections
+        document.getElementById('homePage').querySelectorAll('section:not(#searchResultsSection)').forEach(s => s.style.display = 'none');
+        document.getElementById('searchResultsSection').style.display = '';
+        const row = document.getElementById('searchResultsRow');
+        row.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+        const url = `${BASE_URL}/search/movie?query=${encodeURIComponent(query)}&language=fr-FR`;
+        const res = await fetch(url, options);
+        const data = await res.json();
+        if (!data.results || data.results.length === 0) {
+          row.innerHTML = '<p style="padding:40px;text-align:center;">Aucun film trouvé</p>';
+          return;
+        }
+        addMoviesToRow(data.results, 'searchResultsRow');
+      } catch (e) {
+        console.error(e);
+        document.getElementById('searchResultsRow').innerHTML = '<p>Erreur lors de la recherche</p>';
+      }
     }
 
     // Toggle favoris
@@ -171,20 +191,30 @@ const BASE_URL = "https://api.themoviedb.org/3";
     function likeMovie(id){ alert("Vous aimez ce film !"); }
 
     // Chargement initial
-    fetchMovies("/movie/popular?page=1","topMoviesRow");
-    fetchMovies("/discover/movie?with_genres=28&page=1","actionMoviesRow");
-    fetchMovies("/discover/movie?with_genres=35,10749&page=1","comedyMoviesRow");
-    fetchMovies("/discover/movie?with_genres=878&page=1","scifiMoviesRow");
+  fetchMovies("/movie/popular", "topMoviesRow", 3);
+  fetchMovies("/discover/movie?with_genres=28", "actionMoviesRow", 3);
+  fetchMovies("/discover/movie?with_genres=35,10749", "comedyMoviesRow", 3);
+  fetchMovies("/discover/movie?with_genres=878", "scifiMoviesRow", 3);
 
     document.getElementById('movieModal').addEventListener('click', e=>{ if(e.target.id==='movieModal') closeModal(); });
     document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
 
-    async function fetchMovies(endpoint,rowId){
-      try{
-        const res=await fetch(`${BASE_URL}${endpoint}&language=fr-FR`,options);
-        const data=await res.json();
-        addMoviesToRow(data.results,rowId);
-      }catch(e){console.error(e); document.getElementById(rowId).innerHTML='<p>Erreur lors du chargement des films</p>';}
+    async function fetchMovies(endpoint, rowId, pages = 3) {
+      try {
+        let allResults = [];
+        for (let page = 1; page <= pages; page++) {
+          const url = `${BASE_URL}${endpoint}${endpoint.includes('?') ? '&' : '?'}page=${page}&language=fr-FR`;
+          const res = await fetch(url, options);
+          const data = await res.json();
+          if (Array.isArray(data.results)) {
+            allResults = allResults.concat(data.results);
+          }
+        }
+        addMoviesToRow(allResults, rowId);
+      } catch (e) {
+        console.error(e);
+        document.getElementById(rowId).innerHTML = '<p>Erreur lors du chargement des films</p>';
+      }
     }
 
     function addMoviesToRow(moviesList,rowId){

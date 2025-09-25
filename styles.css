@@ -1,3 +1,31 @@
+/* Section résultats de recherche */
+#searchResultsSection {
+  margin: 40px 0 0 0;
+  padding: 0 40px;
+}
+#searchResultsSection .section-title {
+  justify-content: flex-start;
+  padding-bottom: 10px;
+}
+#searchResultsRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  min-height: 200px;
+  padding-bottom: 40px;
+}
+#searchResultsRow .loading {
+  grid-column: 1/-1;
+  justify-content: center;
+  align-items: center;
+}
+#searchResultsRow p {
+  grid-column: 1/-1;
+  text-align: center;
+  padding: 40px;
+  color: #aaa;
+  font-size: 1.2em;
+}
 :root {
   --primary-color: #e50914;
   --dark-bg: #141414;
