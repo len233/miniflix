@@ -63,3 +63,47 @@
   --transition: all 0.3s ease;
 }
 
+#searchInput {
+  background: rgba(255,255,255,0.1);
+  color: var(--text-light);
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  transition: var(--transition);
+  font-size: 14px;
+  width: 200px;
+  max-width: 100%;
+}
+
+body.light-mode #searchInput { background: rgba(0,0,0,0.1); color: var(--text-dark); }
+body.sepia-mode #searchInput { background: rgba(92,75,55,0.1); color: var(--text-sepia); }
+
+#searchInput:focus {
+  width: 250px;
+  background: rgba(255,255,255,0.2);
+}
+
+body.light-mode #searchInput:focus { background: rgba(0,0,0,0.2); }
+body.sepia-mode #searchInput:focus { background: rgba(92,75,55,0.2); }
+
+.nav-btn {
+  background: rgba(255,255,255,0.1);
+  color: var(--text-light);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+body.light-mode .nav-btn { background: rgba(0,0,0,0.1); color: var(--text-dark); }
+body.sepia-mode .nav-btn { background: rgba(92,75,55,0.1); color: var(--text-sepia); }
+
+.nav-btn:hover { background: rgba(255,255,255,0.2); }
+body.light-mode .nav-btn:hover { background: rgba(0,0,0,0.2); }
+body.sepia-mode .nav-btn:hover { background: rgba(92,75,55,0.2); }
+
+.nav-btn.active { background: var(--primary-color); }
+.nav-buttons { display: flex; gap: 10px; align-items: center; }
+

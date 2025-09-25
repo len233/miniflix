@@ -1,0 +1,10 @@
+body {
+  background: var(--dark-bg);
+  color: var(--text-light);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  margin: 0;
+  transition: var(--transition);
+}
+
+body.light-mode { background: var(--light-bg); color: var(--text-dark); }
+body.sepia-mode { background: var(--sepia-bg); color: var(--text-sepia); }
