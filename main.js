@@ -118,7 +118,15 @@ document.getElementById('clearSearchBtn').addEventListener('click', function(e) 
       favorites = favorites.includes(id) ? favorites.filter(fav=>fav!==id) : [...favorites,id];
       localStorage.setItem('favorites', JSON.stringify(favorites));
       if(event){
-        event.target.closest('.favorite-btn').classList.toggle('active');
+        // Pour bouton modal
+        if(event.target.classList.contains('favorite-toggle-btn')){
+          event.target.classList.toggle('active');
+          event.target.innerHTML = `<i class=\"fas fa-plus\"></i> ${favorites.includes(id)?'Retirer':'Ajouter'}`;
+        }
+        // Pour bouton carte
+        if(event.target.closest('.favorite-btn')){
+          event.target.closest('.favorite-btn').classList.toggle('active');
+        }
         if(document.getElementById('favoritesPage').classList.contains('active')) displayFavorites();
       }
     }
@@ -170,7 +178,9 @@ document.getElementById('clearSearchBtn').addEventListener('click', function(e) 
             </div>
             <div class="action-buttons">
               <button class="play-btn" aria-label="Lire ${movie.title}"><i class="fas fa-play"></i> Lire</button>
-              <button onclick="toggleFavorite(${id})" aria-label="${favorites.includes(id)?'Retirer':'Ajouter'} des favoris"><i class="fas fa-plus"></i> ${favorites.includes(id)?'Retirer':'Ajouter'}</button>
+              <button class="favorite-btn${favorites.includes(id)?' active':''}" aria-label="${favorites.includes(id)?'Retirer':'Ajouter'} des favoris" onclick="toggleFavorite(${id}, event)">
+                <i class="fas fa-heart"></i>
+              </button>
               <button onclick="likeMovie(${id})" aria-label="J'aime ${movie.title}"><i class="fas fa-thumbs-up"></i> J'aime</button>
             </div>
             <p>${movie.overview || "Aucune description disponible."}</p>
