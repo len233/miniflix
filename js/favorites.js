@@ -14,6 +14,14 @@ function toggleFavorite(id, event){
     }
     if(document.getElementById('favoritesPage').classList.contains('active')) displayFavorites();
   }
+  // Notification lors de l'ajout ou retrait d'un favori
+  if (typeof showNotification === 'function') {
+    if (favorites.includes(id)) {
+      showNotification('Ajouté aux favoris', 'success');
+    } else {
+      showNotification('Retiré des favoris', 'info');
+    }
+  }
 }
 
 function displayFavorites(){

@@ -1,6 +1,10 @@
 // Configuration et variables globales
 const BASE_URL = "https://api.themoviedb.org/3";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
+const CACHE_DURATION = 30 * 60 * 1000; // 30 minutes en millisecondes
+const MAX_RETRIES = 3;
+const RETRY_DELAY = 1000; // 1 seconde
+
 const options = { 
   method: "GET", 
   headers: { 
@@ -9,6 +13,49 @@ const options = {
   }
 };
 
+// Cache et état global
 let allMovies = {};
 let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 let currentTheme = 'dark'; // 'dark', 'light', 'sepia'
+let cache = new Map();
+
+// Gestion du cache
+const getCacheKey = (url) => `cache_${url}`;
+const setCacheItem = (key, data) => {
+  cache.set(key, {
+    data,
+    timestamp: Date.now()
+  });
+};
+const getCacheItem = (key) => {
+  const item = cache.get(key);
+  if (!item) return null;
+  if (Date.now() - item.timestamp > CACHE_DURATION) {
+    cache.delete(key);
+    return null;
+  }
+  return item.data;
+};
+
+// Gestion des erreurs et retries
+async function fetchWithRetry(url, options, retries = MAX_RETRIES) {
+  try {
+    const cacheKey = getCacheKey(url);
+    const cachedData = getCacheItem(cacheKey);
+    if (cachedData) return cachedData;
+
+    const response = await fetch(url, options);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    setCacheItem(cacheKey, data);
+    return data;
+  } catch (error) {
+    if (retries > 0) {
+      await new Promise(resolve => setTimeout(resolve, RETRY_DELAY));
+      return fetchWithRetry(url, options, retries - 1);
+    }
+    throw error;
+  }
+}

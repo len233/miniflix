@@ -39,3 +39,10 @@ function addMoviesToRow(moviesList,rowId){
     row.appendChild(card);
   });
 }
+
+// Exemple : notification lors de la sortie d'un nouveau film
+function notifyNewMovie(movie) {
+  if (typeof showNotification === 'function') {
+    showNotification(`Nouveau film disponible : ${movie.title}`, 'info');
+  }
+}
