@@ -24,11 +24,11 @@ async function showModal(id){
           <span><i class="fas fa-star"></i> ${movie.vote_average?movie.vote_average.toFixed(1):"N/A"}</span>
         </div>
         <div class="action-buttons">
-          <button class="play-btn"><i class="fas fa-play"></i> Lire</button>
+          <button class="play-btn"><i class="fas fa-play"></i></button>
           <button class="favorite-btn${favorites.includes(id)?' active':''}" onclick="toggleFavorite(${id}, event)">
             <i class="fas fa-heart"></i>
           </button>
-          <button onclick="likeMovie(${id})"><i class="fas fa-thumbs-up"></i> J'aime</button>
+          <button onclick="likeMovie(${id})"><i class="fas fa-thumbs-up"></i></button>
         </div>
         <p>${movie.overview || "Aucune description disponible."}</p>
         <p><strong>Genres :</strong> ${details.genres.map(g=>g.name).join(", ")}</p>
