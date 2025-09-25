@@ -550,15 +550,36 @@ body.sepia-mode .action-buttons button:hover { background: rgba(92,75,55,0.2); }
 /* Pages secondaires */
 .favorites-page {
   display: none;
-  padding: 100px 40px 40px;
+  margin-top: 40px;
+  padding: 0 40px 40px;
 }
 
 .favorites-page.active { display: block; }
 .favorites-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  min-height: 200px;
+  margin-top: 0;
+/* Harmonisation des cartes favoris avec recherche */
+.favorites-grid .movie-card {
+  background: var(--card-bg);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.favorites-grid .movie-card:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(229,9,20,0.18);
+}
+.favorites-grid .movie-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
 }
 
 /* Loading */
@@ -628,7 +649,7 @@ body.sepia-mode .spinner { border: 4px solid rgba(92,75,55,0.3); }
   .movie-card { width: 160px; }
   iframe, .modal-header img { height: 250px; }
   .modal-body { padding: 20px; }
-  .favorites-page { padding: 120px 20px 40px; }
+  .favorites-page { padding: 20px 10px 20px; }
 }
 
 @media (max-width: 480px) {
