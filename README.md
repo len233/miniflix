@@ -19,7 +19,6 @@ projet_final_font/
 ├── LICENSE
 ├── css/
 │   ├── base.css
-│   ├── variables.css
 │   ├── header.css
 │   ├── hero.css
 │   ├── search.css
@@ -33,8 +32,8 @@ projet_final_font/
 │   ├── responsive.css
 ├── js/
 │   ├── config.js
-│   ├── favorites.js
 │   ├── main.js
+│   ├── favorites.js
 │   ├── modal.js
 │   ├── movies.js
 │   ├── navigation.js
@@ -58,7 +57,7 @@ projet_final_font/
 - [TMDB](https://www.themoviedb.org/documentation/api)
 
 ## Auteur
-- Projet réalisé par len233
+- Projet réalisé par Hélène Villarsin
 
 ## Licence
 Ce projet est sous licence MIT.

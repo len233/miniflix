@@ -13,8 +13,12 @@ header {
   transition: var(--transition);
 }
 
-body.light-mode header { background: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.85)); }
-body.sepia-mode header { background: linear-gradient(to bottom, rgba(245,241,230,0.95), rgba(245,241,230,0.85)); }
+body.light-mode header { 
+  background: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.85)); 
+}
+body.sepia-mode header { 
+  background: linear-gradient(to bottom, rgba(245,241,230,0.95), rgba(245,241,230,0.85)); 
+}
 
 .logo {
   font-size: clamp(1.5rem, 4vw, 1.8rem);
@@ -45,7 +49,6 @@ body.sepia-mode header { background: linear-gradient(to bottom, rgba(245,241,230
   cursor: pointer;
   padding: 0;
 }
-
 .menu-toggle span {
   display: block;
   height: 3px;
@@ -55,12 +58,22 @@ body.sepia-mode header { background: linear-gradient(to bottom, rgba(245,241,230
   transition: var(--transition);
 }
 
-body.light-mode .menu-toggle span { background-color: var(--text-dark); }
-body.sepia-mode .menu-toggle span { background-color: var(--text-sepia); }
+body.light-mode .menu-toggle span { 
+  background-color: var(--text-dark); 
+}
+body.sepia-mode .menu-toggle span { 
+  background-color: var(--text-sepia); 
+}
 
-.menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
-.menu-toggle.active span:nth-child(2) { opacity: 0; }
-.menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+.menu-toggle.active span:nth-child(1) { 
+  transform: rotate(45deg) translate(6px, 6px); 
+}
+.menu-toggle.active span:nth-child(2) { 
+  opacity: 0; 
+}
+.menu-toggle.active span:nth-child(3) { 
+  transform: rotate(-45deg) translate(6px, -6px); 
+}
 
 .nav-main {
   display: flex;
@@ -92,7 +105,6 @@ body.sepia-mode .menu-toggle span { background-color: var(--text-sepia); }
   z-index: 2;
 }
 
-/* Commun pour notifications */
 .notification-list,
 .notification-item {
   background: #222;
@@ -123,8 +135,12 @@ body.sepia-mode .menu-toggle span { background-color: var(--text-sepia); }
 .notification-item:last-child {
   border-bottom: none;
 }
-.notification-item.success { color: #4caf50; }
-.notification-item.error { color: #e50914; }
+.notification-item.success { 
+  color: #4caf50; 
+}
+.notification-item.error { 
+  color: #e50914; 
+}
 
 .notif-close {
   background: none;

@@ -3,8 +3,9 @@
   margin-top: 40px;
   padding: 0 40px 40px;
 }
-
-.favorites-page.active { display: block; }
+.favorites-page.active { 
+  display: block; 
+}
 
 .favorites-grid {
   display: grid;
@@ -13,7 +14,6 @@
   min-height: 200px;
   margin-top: 0;
 }
-
 .favorites-grid .movie-card {
   background: var(--card-bg);
   border-radius: 10px;
@@ -22,12 +22,10 @@
   position: relative;
   transition: transform 0.2s, box-shadow 0.2s;
 }
-
 .favorites-grid .movie-card:hover {
   transform: translateY(-4px) scale(1.03);
   box-shadow: 0 8px 24px rgba(229,9,20,0.18);
 }
-
 .favorites-grid .movie-card img {
   width: 100%;
   height: 220px;

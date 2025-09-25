@@ -1,4 +1,3 @@
-/* Sections films */
 .section-title {
   padding: 20px 40px 10px;
   font-size: 1.5rem;
@@ -21,15 +20,26 @@
   gap: 15px;
   scroll-behavior: smooth;
 }
-
-.movies-row::-webkit-scrollbar { height: 8px; }
+.movies-row::-webkit-scrollbar { 
+  height: 8px; 
+}
 .movies-row::-webkit-scrollbar-track { 
   background: rgba(255,255,255,0.1);
   border-radius: 10px;
 }
-body.light-mode .movies-row::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); }
-body.sepia-mode .movies-row::-webkit-scrollbar-track { background: rgba(92,75,55,0.1); }
-.movies-row::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 10px; }
+
+body.light-mode .movies-row::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.1);
+}
+
+body.sepia-mode .movies-row::-webkit-scrollbar-track {
+  background: rgba(92,75,55,0.1);
+}
+
+.movies-row::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
+}
 
 /* Cartes films unifiées */
 .movie-card {
@@ -43,9 +53,14 @@ body.sepia-mode .movies-row::-webkit-scrollbar-track { background: rgba(92,75,55
   background: var(--card-bg);
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
-
-body.light-mode .movie-card { background: var(--card-light); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-body.sepia-mode .movie-card { background: var(--card-sepia); box-shadow: 0 4px 8px rgba(92,75,55,0.2); }
+body.light-mode .movie-card { 
+  background: var(--card-light); 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+}
+body.sepia-mode .movie-card { 
+  background: var(--card-sepia); 
+  box-shadow: 0 4px 8px rgba(92,75,55,0.2); 
+}
 
 .movie-card img {
   width: 100%;
@@ -55,10 +70,14 @@ body.sepia-mode .movie-card { background: var(--card-sepia); box-shadow: 0 4px 8
   transition: var(--transition);
   filter: sepia(0%);
 }
+body.sepia-mode .movie-card img { 
+  filter: sepia(30%); 
+}
 
-body.sepia-mode .movie-card img { filter: sepia(30%); }
+.movie-info { 
+  padding: 15px;  
+}
 
-.movie-info { padding: 15px; }
 .movie-title {
   font-weight: bold;
   margin-bottom: 5px;
@@ -78,8 +97,9 @@ body.sepia-mode .movie-card img { filter: sepia(30%); }
   transform: translateY(-10px) scale(1.03);
   z-index: 10;
 }
-
-.movie-card:hover img { opacity: 0.7; }
+.movie-card:hover img { 
+  opacity: 0.7; 
+}
 
 .favorite-btn {
   position: absolute;
@@ -99,11 +119,24 @@ body.sepia-mode .movie-card img { filter: sepia(30%); }
   transition: var(--transition);
 }
 
-body.light-mode .favorite-btn { background: rgba(255,255,255,0.7); color: var(--text-dark); }
-body.sepia-mode .favorite-btn { background: rgba(92,75,55,0.7); color: var(--text-sepia); }
+body.light-mode .favorite-btn { 
+  background: rgba(255,255,255,0.7); 
+  color: var(--text-dark); 
+}
+body.sepia-mode .favorite-btn { 
+  background: rgba(92,75,55,0.7); 
+  color: var(--text-sepia); 
+}
 
-.movie-card:hover .favorite-btn { opacity: 1; }
-.favorite-btn.active { color: var(--primary-color) !important; opacity: 1; }
+.movie-card:hover .favorite-btn { 
+  opacity: 1; 
+}
+
+.favorite-btn.active { 
+  color: var(--primary-color) !important; 
+  opacity: 1; 
+}
+
 /* Style du bouton coeur dans le modal */
 .action-buttons .favorite-btn {
   position: static;

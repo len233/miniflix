@@ -10,17 +10,25 @@
   width: 200px;
   max-width: 100%;
 }
-
-body.light-mode #searchInput { background: rgba(0,0,0,0.1); color: var(--text-dark); }
-body.sepia-mode #searchInput { background: rgba(92,75,55,0.1); color: var(--text-sepia); }
+body.light-mode #searchInput { 
+  background: rgba(0,0,0,0.1); 
+  color: var(--text-dark); 
+}
+body.sepia-mode #searchInput { 
+  background: rgba(92,75,55,0.1); 
+  color: var(--text-sepia); 
+}
 
 #searchInput:focus {
   width: 250px;
   background: rgba(255,255,255,0.2);
 }
-
-body.light-mode #searchInput { background: rgba(0,0,0,0.1); color: var(--text-dark); }
-body.sepia-mode #searchInput { background: rgba(92,75,55,0.1); color: var(--text-sepia); }
+body.light-mode #searchInput { 
+  background: rgba(0,0,0,0.1); color: var(--text-dark); 
+}
+body.sepia-mode #searchInput { 
+  background: rgba(92,75,55,0.1); color: var(--text-sepia); 
+}
 
 .nav-btn {
   background: rgba(255,255,255,0.1);
@@ -37,15 +45,31 @@ body.sepia-mode #searchInput { background: rgba(92,75,55,0.1); color: var(--text
   
 }
 
-body.light-mode .nav-btn { background: rgba(0,0,0,0.1); color: var(--text-dark); }
-body.sepia-mode .nav-btn { background: rgba(92,75,55,0.1); color: var(--text-sepia); }
+body.light-mode .nav-btn { 
+  background: rgba(0,0,0,0.1); color: var(--text-dark); 
+}
+body.sepia-mode .nav-btn { 
+  background: rgba(92,75,55,0.1); color: var(--text-sepia); 
+}
 
-.nav-btn:hover { background: rgba(255,255,255,0.2); }
-body.light-mode .nav-btn:hover { background: rgba(0,0,0,0.2); }
-body.sepia-mode .nav-btn:hover { background: rgba(92,75,55,0.2); }
+.nav-btn:hover { 
+  background: rgba(255,255,255,0.2); 
+}
+body.light-mode .nav-btn:hover { 
+  background: rgba(0,0,0,0.2); 
+}
+body.sepia-mode .nav-btn:hover { 
+  background: rgba(92,75,55,0.2); 
+}
 
-.nav-btn.active { background: var(--primary-color); }
-.nav-buttons { display: flex; gap: 10px; align-items: center; }
+.nav-btn.active { 
+  background: var(--primary-color); 
+}
+.nav-buttons { 
+  display: flex; 
+  gap: 10px; 
+  align-items: center; 
+}
 
 #searchResultsSection {
   margin: 40px 0 0 0;
@@ -55,6 +79,7 @@ body.sepia-mode .nav-btn:hover { background: rgba(92,75,55,0.2); }
   justify-content: flex-start;
   padding-bottom: 10px;
 }
+
 #searchResultsRow {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -81,6 +106,7 @@ body.sepia-mode .nav-btn:hover { background: rgba(92,75,55,0.2); }
   position: relative;
   display: inline-block;
 }
+
 .clear-search-btn {
   position: absolute;
   right: 10px;
