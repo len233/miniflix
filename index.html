@@ -15,7 +15,12 @@
     </div>
     
     <div class="nav-container">
-      <input type="text" id="searchInput" placeholder="Rechercher un film..." aria-label="Recherche de film">
+      <div class="search-wrapper">
+        <input type="text" id="searchInput" placeholder="Rechercher un film..." aria-label="Recherche de film">
+        <button id="clearSearchBtn" class="clear-search-btn" aria-label="Effacer la recherche" style="display:none">
+          <span>&times;</span>
+        </button>
+      </div>
       
       <div class="nav-buttons">
         <button class="nav-btn active" id="homeBtn" aria-label="Accueil">

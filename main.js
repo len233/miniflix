@@ -64,6 +64,23 @@ const BASE_URL = "https://api.themoviedb.org/3";
     let searchTimeout;
 
     document.getElementById('searchInput').addEventListener('input', e => {
+      // Afficher ou cacher la croix
+      const clearBtn = document.getElementById('clearSearchBtn');
+      if (e.target.value.length > 0) {
+        clearBtn.style.display = 'block';
+      } else {
+        clearBtn.style.display = 'none';
+      }
+// Logique pour effacer la barre de recherche
+document.getElementById('clearSearchBtn').addEventListener('click', function(e) {
+  e.preventDefault();
+  const input = document.getElementById('searchInput');
+  input.value = '';
+  this.style.display = 'none';
+  document.getElementById('searchResultsSection').style.display = 'none';
+  document.getElementById('homePage').querySelectorAll('section:not(#searchResultsSection)').forEach(s => s.style.display = '');
+  input.focus();
+});
       clearTimeout(searchTimeout);
       const query = e.target.value.trim();
       if (query.length < 2) {

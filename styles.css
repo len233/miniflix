@@ -27,6 +27,29 @@
   font-size: 1.2em;
 }
 :root {
+/* Croix effacement barre de recherche */
+.search-wrapper {
+  position: relative;
+  display: inline-block;
+}
+.clear-search-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--primary-color);
+  font-size: 1.3em;
+  cursor: pointer;
+  padding: 0;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  z-index: 2;
+}
+.clear-search-btn:hover {
+  opacity: 1;
+}
   --primary-color: #e50914;
   --dark-bg: #141414;
   --light-bg: #f5f5f5;
