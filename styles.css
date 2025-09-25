@@ -504,6 +504,7 @@
   .movie-card:hover .favorite-btn {
     opacity: 1;
   }
+  
   .favorite-btn.active, body.light-mode .favorite-btn.active, body.sepia-mode .favorite-btn active {
     color: var(--primary-color) !important;
     opacity: 1;
