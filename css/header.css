@@ -69,7 +69,6 @@ body.sepia-mode .menu-toggle span { background-color: var(--text-sepia); }
   transition: var(--transition);
 }
 
-/* Notification bell styles */
 .notification-bell {
   position: relative;
   display: inline-block;
@@ -93,25 +92,25 @@ body.sepia-mode .menu-toggle span { background-color: var(--text-sepia); }
   z-index: 2;
 }
 
-/* Apparence personnalisée notifications */
-.notification-list {
-  position: absolute;
-  right: 0;
-  top: 48px;
+/* Commun pour notifications */
+.notification-list,
+.notification-item {
   background: #222;
   color: #fff;
-  min-width: 260px;
   border-radius: 10px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-  padding: 0.5rem 0;
-  z-index: 99;
-  border: 1px solid #333;
-  animation: fadeInNotif 0.3s;
 }
 
-@keyframes fadeInNotif {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+.notification-list {
+  position: fixed;
+  left: auto;
+  right: 32px;
+  top: 70px;
+  min-width: 260px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  padding: 0.5rem 0;
+  z-index: 9999;
+  border: 1px solid #333;
+  animation: fadeInNotif 0.3s;
 }
 
 .notification-item {
@@ -124,15 +123,9 @@ body.sepia-mode .menu-toggle span { background-color: var(--text-sepia); }
 .notification-item:last-child {
   border-bottom: none;
 }
-.notification-item.info {
-  color: #fff;
-}
-.notification-item.success {
-  color: #4caf50;
-}
-.notification-item.error {
-  color: #e50914;
-}
+.notification-item.success { color: #4caf50; }
+.notification-item.error { color: #e50914; }
+
 .notif-close {
   background: none;
   border: none;
@@ -148,25 +141,6 @@ body.sepia-mode .menu-toggle span { background-color: var(--text-sepia); }
   border-radius: 50%;
 }
 
-.notification-bell {
-  position: relative;
-}
-
-.notification-list {
-  position: fixed;
-  left: auto;
-  right: 32px; /* Ajuste selon la position de ta cloche */
-  top: 70px;   /* Ajuste selon la hauteur de ton header */
-  min-width: 260px;
-  background: #222;
-  color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-  padding: 0.5rem 0;
-  z-index: 9999;
-  border: 1px solid #333;
-  animation: fadeInNotif 0.3s;
-}
 @keyframes fadeInNotif {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
