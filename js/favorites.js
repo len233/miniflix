@@ -1,9 +1,7 @@
-// Gestion des favoris
 function toggleFavorite(id, event){
   if(event) event.stopPropagation();
   favorites = favorites.includes(id) ? favorites.filter(fav=>fav!==id) : [...favorites,id];
   localStorage.setItem('favorites', JSON.stringify(favorites));
-  // Mise à jour des boutons
   if(event){
     if(event.target.classList.contains('favorite-toggle-btn')){
       event.target.classList.toggle('active');
@@ -26,6 +24,7 @@ function toggleFavorite(id, event){
   }
 }
 
+// Affiche les films favoris sur la page des favoris
 function displayFavorites(){
   const grid=document.getElementById('favoritesGrid');
   if(favorites.length===0){
