@@ -3,7 +3,6 @@ function toggleFavorite(id, event){
   if(event) event.stopPropagation();
   favorites = favorites.includes(id) ? favorites.filter(fav=>fav!==id) : [...favorites,id];
   localStorage.setItem('favorites', JSON.stringify(favorites));
-  
   // Mise à jour des boutons
   if(event){
     if(event.target.classList.contains('favorite-toggle-btn')){
@@ -17,10 +16,12 @@ function toggleFavorite(id, event){
   }
   // Notification lors de l'ajout ou retrait d'un favori
   if (typeof showNotification === 'function') {
+    const movie = allMovies[id];
+    const title = movie ? movie.title : 'Ce film';
     if (favorites.includes(id)) {
-      showNotification('Ajouté aux favoris', 'success');
+      showNotification(`Ajouté aux favoris : <b>${title}</b>`, 'success');
     } else {
-      showNotification('Retiré des favoris', 'info');
+      showNotification(`Retiré des favoris : <b>${title}</b>`, 'info');
     }
   }
 }

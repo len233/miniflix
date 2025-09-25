@@ -12,76 +12,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
-// Gestion pagination pour chaque catégorie
-let topPage = 1;
-let topMovies = [];
-async function fetchTopMovies(nbPages = 3) {
-  for (let page = topPage; page < topPage + nbPages; page++) {
-    const url = `${BASE_URL}/movie/popular?page=${page}&language=fr-FR`;
-    const res = await fetch(url, options);
-    const data = await res.json();
-    if (Array.isArray(data.results)) {
-      topMovies = topMovies.concat(data.results);
-    }
-  }
-  topPage += nbPages;
-  // On affiche uniquement les 10 premiers films les plus populaires
-  // Toujours maximum 10 films affichés
-  addMoviesToRow(topMovies.slice(0, 10), 'topMoviesRow');
-}
-fetchTopMovies(3);
 
 
-let actionPage = 1;
-let actionMovies = [];
-async function fetchActionMovies(nbPages = 3) {
-  for (let page = actionPage; page < actionPage + nbPages; page++) {
-    const url = `${BASE_URL}/discover/movie?with_genres=28&page=${page}&language=fr-FR`;
-    const res = await fetch(url, options);
-    const data = await res.json();
-    if (Array.isArray(data.results)) {
-      actionMovies = actionMovies.concat(data.results);
+function fetchCategory({endpoint, rowId, nbPages = 3, max = null, pageVar, moviesVar}) {
+  window[pageVar] = window[pageVar] || 1;
+  window[moviesVar] = window[moviesVar] || [];
+  (async () => {
+    for (let page = window[pageVar]; page < window[pageVar] + nbPages; page++) {
+      const url = `${BASE_URL}${endpoint}${endpoint.includes('?') ? '&' : '?'}page=${page}&language=fr-FR`;
+      const res = await fetch(url, options);
+      const data = await res.json();
+      if (Array.isArray(data.results)) window[moviesVar] = window[moviesVar].concat(data.results);
     }
-  }
-  actionPage += nbPages;
-  addMoviesToRow(actionMovies, 'actionMoviesRow');
+    window[pageVar] += nbPages;
+    addMoviesToRow(max ? window[moviesVar].slice(0, max) : window[moviesVar], rowId);
+  })();
 }
-fetchActionMovies(3);
-function loadMoreAction() { fetchActionMovies(1); }
 
-let comedyPage = 1;
-let comedyMovies = [];
-async function fetchComedyMovies(nbPages = 3) {
-  for (let page = comedyPage; page < comedyPage + nbPages; page++) {
-    const url = `${BASE_URL}/discover/movie?with_genres=35,10749&page=${page}&language=fr-FR`;
-    const res = await fetch(url, options);
-    const data = await res.json();
-    if (Array.isArray(data.results)) {
-      comedyMovies = comedyMovies.concat(data.results);
-    }
-  }
-  comedyPage += nbPages;
-  addMoviesToRow(comedyMovies, 'comedyMoviesRow');
-}
-fetchComedyMovies(3);
-function loadMoreComedy() { fetchComedyMovies(1); }
+fetchCategory({endpoint: '/movie/popular', rowId: 'topMoviesRow', nbPages: 3, max: 10, pageVar: 'topPage', moviesVar: 'topMovies'});
 
-let scifiPage = 1;
-let scifiMovies = [];
-async function fetchScifiMovies(nbPages = 3) {
-  for (let page = scifiPage; page < scifiPage + nbPages; page++) {
-    const url = `${BASE_URL}/discover/movie?with_genres=878&page=${page}&language=fr-FR`;
-    const res = await fetch(url, options);
-    const data = await res.json();
-    if (Array.isArray(data.results)) {
-      scifiMovies = scifiMovies.concat(data.results);
-    }
-  }
-  scifiPage += nbPages;
-  addMoviesToRow(scifiMovies, 'scifiMoviesRow');
+function loadMoreAction() { fetchCategory({endpoint: '/discover/movie?with_genres=28', rowId: 'actionMoviesRow', nbPages: 1, pageVar: 'actionPage', moviesVar: 'actionMovies'}); }
+fetchCategory({endpoint: '/discover/movie?with_genres=28', rowId: 'actionMoviesRow', nbPages: 3, pageVar: 'actionPage', moviesVar: 'actionMovies'});
+
+
+function loadMoreComedy() { fetchCategory({endpoint: '/discover/movie?with_genres=35,10749', rowId: 'comedyMoviesRow', nbPages: 1, pageVar: 'comedyPage', moviesVar: 'comedyMovies'}); }
+fetchCategory({endpoint: '/discover/movie?with_genres=35,10749', rowId: 'comedyMoviesRow', nbPages: 3, pageVar: 'comedyPage', moviesVar: 'comedyMovies'});
+
+
+function loadMoreScifi() { 
+  fetchCategory({endpoint: '/discover/movie?with_genres=878', rowId: 'scifiMoviesRow', nbPages: 1, pageVar: 'scifiPage', moviesVar: 'scifiMovies'}); 
 }
-fetchScifiMovies(3);
-function loadMoreScifi() { fetchScifiMovies(1); }
+fetchCategory({endpoint: '/discover/movie?with_genres=878', rowId: 'scifiMoviesRow', nbPages: 3, pageVar: 'scifiPage', moviesVar: 'scifiMovies'});
 // Chargement des films depuis l'API
 async function fetchMovies(endpoint, rowId, pages = 3) { 
   try {
@@ -141,29 +102,8 @@ function notifyNewMovie(movie) {
 }
 
 // Récupération et affichage des films d'animation (genre TMDB 16)
-const ANIMATION_GENRE_ID = 16;
-let animationPage = 1;
-let animationMovies = [];
-
-async function fetchAnimationMovies(nbPages = 3) {
-  for (let page = animationPage; page < animationPage + nbPages; page++) {
-    const url = `${BASE_URL}/discover/movie?with_genres=${ANIMATION_GENRE_ID}&page=${page}&language=fr-FR`;
-    const res = await fetch(url, options);
-    const data = await res.json();
-    if (Array.isArray(data.results)) {
-      animationMovies = animationMovies.concat(data.results);
-    }
-  }
-  animationPage += nbPages;
-  addMoviesToRow(animationMovies, 'animationMoviesRow');
-}
-
-fetchAnimationMovies(3);
-
-// Fonction pour charger plus de films d'animation (à relier à un bouton)
-function loadMoreAnimation() {
-  fetchAnimationMovies(1); // Charge 1 page supplémentaire
-}
+function loadMoreAnimation() { fetchCategory({endpoint: '/discover/movie?with_genres=16', rowId: 'animationMoviesRow', nbPages: 1, pageVar: 'animationPage', moviesVar: 'animationMovies'}); }
+fetchCategory({endpoint: '/discover/movie?with_genres=16', rowId: 'animationMoviesRow', nbPages: 3, pageVar: 'animationPage', moviesVar: 'animationMovies'});
 
 // Ajout de l'écouteur pour le bouton 'Voir plus' Animation (span comme les autres)
 document.addEventListener('DOMContentLoaded', () => {
