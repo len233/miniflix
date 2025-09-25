@@ -1,4 +1,4 @@
- const BASE_URL = "https://api.themoviedb.org/3";
+const BASE_URL = "https://api.themoviedb.org/3";
     const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
     const options = { method: "GET", headers: { accept: "application/json", Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNGI5MDMyNzIyN2M4OGRhYWMxNGMwYmQwYzFmOTNjZCIsIm5iZiI6MTc1ODY0ODMyMS43NDg5OTk4LCJzdWIiOiI2OGQyZDgwMTJhNWU3YzBhNDVjZWNmZWUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.aylEitwtAH0w4XRk8izJNNkF_bet8sxiC9iI-zSdHbU"}};
 
@@ -40,6 +40,25 @@
         document.querySelector('#themeToggle i').className = 'fas fa-moon';
       }
     });
+
+    // Gestion du profil utilisateur
+      const userProfile = document.getElementById('userProfile');
+      const profileDropdown = document.getElementById('profileDropdown');
+      
+      userProfile.addEventListener('click', function(e) {
+        e.stopPropagation();
+        profileDropdown.classList.toggle('active');
+      });
+      
+      // Fermer le dropdown quand on clique ailleurs
+      document.addEventListener('click', function() {
+        profileDropdown.classList.remove('active');
+      });
+      
+      // Empêcher la fermeture quand on clique dans le dropdown
+      profileDropdown.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
 
     // Recherche avec debounce
     let searchTimeout;
