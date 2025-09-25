@@ -47,7 +47,6 @@ body.sepia-mode .nav-btn:hover { background: rgba(92,75,55,0.2); }
 .nav-btn.active { background: var(--primary-color); }
 .nav-buttons { display: flex; gap: 10px; align-items: center; }
 
-/* Section résultats de recherche */
 #searchResultsSection {
   margin: 40px 0 0 0;
   padding: 0 40px;
