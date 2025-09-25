@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AniX</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <i class="fas fa-film"></i>
+      <span>AniX</span>
+    </div>
+    
+    <div class="nav-container">
+      <input type="text" id="searchInput" placeholder="Rechercher un film..." aria-label="Recherche de film">
+      
+      <div class="nav-buttons">
+        <button class="nav-btn active" id="homeBtn" aria-label="Accueil">
+          <i class="fas fa-home"></i> Accueil
+        </button>
+        <button class="nav-btn" id="favoritesBtn" aria-label="Favoris">
+          <i class="fas fa-heart"></i> Favoris
+        </button>
+        <button class="nav-btn" id="themeToggle" aria-label="Changer le mode clair/sombre">
+          <i class="fas fa-moon"></i> Mode
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Page d'accueil -->
+    <div id="homePage">
+      <section class="hero">
+        <div class="hero-content">
+          <h1 class="hero-title">Stranger Things</h1>
+          <p class="hero-description">À Hawkins, en 1983 dans l'Indiana. Lorsque Will Byers disparaît de son domicile, ses amis se lancent dans une recherche semée d'embûches pour le retrouver.</p>
+          <div class="hero-buttons">
+            <button class="hero-btn play-btn" aria-label="Lire Stranger Things">
+              <i class="fas fa-play"></i> Lecture
+            </button>
+            <button class="hero-btn info-btn" aria-label="Plus d'informations sur Stranger Things">
+              <i class="fas fa-info-circle"></i> Plus d'infos
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sections films (Populaires, Action, etc.) -->
+      <section>
+        <div class="section-title">
+          <h2>Populaires</h2>
+          <span class="view-all" role="button" tabindex="0">Tout voir</span>
+        </div>
+        <div class="movies-row" id="topMoviesRow">
+          <div class="loading">
+            <div class="spinner"></div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-title">
+          <h2>Action</h2>
+          <span class="view-all" role="button" tabindex="0">Tout voir</span>
+        </div>
+        <div class="movies-row" id="actionMoviesRow">
+          <div class="loading">
+            <div class="spinner"></div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-title">
+          <h2>Comédie & Romance</h2>
+          <span class="view-all" role="button" tabindex="0">Tout voir</span>
+        </div>
+        <div class="movies-row" id="comedyMoviesRow">
+          <div class="loading">
+            <div class="spinner"></div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-title">
+          <h2>Science-Fiction</h2>
+          <span class="view-all" role="button" tabindex="0">Tout voir</span>
+        </div>
+        <div class="movies-row" id="scifiMoviesRow">
+          <div class="loading">
+            <div class="spinner"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+    
+    <!-- Page Favoris -->
+    <div class="favorites-page" id="favoritesPage">
+      <div class="section-title">
+        <h2>Mes Favoris</h2>
+      </div>
+      <div class="favorites-grid" id="favoritesGrid">
+        <p style="grid-column: 1/-1; text-align: center; padding: 40px;">Aucun film favori pour le moment</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- MODAL -->
+  <div id="movieModal" role="dialog" aria-modal="true" aria-hidden="true"></div>
+
+  <script src="main.js"></script>
+</body>
+</html>
