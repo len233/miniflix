@@ -1,59 +1,4 @@
-.arrow-btn {
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background: none;
-  border: none;
-  box-shadow: 0 2px 8px rgba(221,36,118,0.13);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: transform 0.18s, box-shadow 0.18s;
-  outline: none;
-}
-.arrow-btn svg {
-  width: 44px;
-  height: 44px;
-  display: block;
-}
-.arrow-btn:focus,
-.arrow-btn:hover {
-  transform: scale(1.15);
-  box-shadow: 0 4px 16px rgba(221,36,118,0.18);
-}
-/* Numérotation des films top */
-.movie-rank {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: var(--primary-color);
-  color: #fff;
-  font-size: 1.3rem;
-  font-weight: bold;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-  z-index: 2;
-}
-.section-title {
-  padding: 20px 40px 10px;
-  font-size: 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.view-all {
-  font-size: 0.9rem;
-  color: var(--primary-color);
-  cursor: pointer;
-}
-
+/* ligne horizontale de films */
 .movies-row {
   display: flex;
   flex-wrap: nowrap;
@@ -65,29 +10,7 @@
   margin: 0 auto;
 }
 
-.movies-row::-webkit-scrollbar {
-  height: 8px;
-  width: 80%;
-}
-.movies-row::-webkit-scrollbar-track {
-  background: rgba(0,0,0,0.0); 
-  border-radius: 10px;
-}
-
-body.light-mode .movies-row::-webkit-scrollbar-track {
-  background: rgba(0,0,0,0.1);
-}
-
-body.sepia-mode .movies-row::-webkit-scrollbar-track {
-  background: rgba(92,75,55,0.1);
-}
-
-.movies-row::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.421); 
-  border-radius: 10px;
-}
-
-/* Cartes films unifiées */
+/* cartes films */
 .movie-card {
   position: relative;
   flex: 0 0 auto;
@@ -120,16 +43,16 @@ body.sepia-mode .movie-card img {
   filter: sepia(30%); 
 }
 
-.movie-info { 
-  padding: 15px;  
-}
-
 .movie-title {
   font-weight: bold;
   margin-bottom: 5px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.movie-info { 
+  padding: 15px; 
 }
 
 .movie-meta {
@@ -144,11 +67,13 @@ body.sepia-mode .movie-card img {
   z-index: 10;
 }
 
+/* bouton favoris sur carte */
 .favorite-btn {
   position: absolute;
   top: 10px;
   right: 10px;
   background: rgba(0,0,0,0.7);
+  color: white;
   border: none;
   border-radius: 50%;
   width: 36px;
@@ -156,12 +81,11 @@ body.sepia-mode .movie-card img {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
   cursor: pointer;
   opacity: 0;
   transition: var(--transition);
-}
 
+}
 body.light-mode .favorite-btn { 
   background: rgba(255,255,255,0.7); 
   color: var(--text-dark); 
@@ -174,13 +98,32 @@ body.sepia-mode .favorite-btn {
 .movie-card:hover .favorite-btn { 
   opacity: 1; 
 }
-
 .favorite-btn.active { 
   color: var(--primary-color) !important; 
   opacity: 1; 
 }
 
-/* Style du bouton coeur dans le modal */
+/* scrollbar custom */
+.movies-row::-webkit-scrollbar { 
+  height: 8px;
+  width: 80%;
+}
+.movies-row::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.0);
+  border-radius: 10px;
+}
+body.light-mode .movies-row::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.1);
+}
+body.sepia-mode .movies-row::-webkit-scrollbar-track {
+  background: rgba(92,75,55,0.1);
+}
+.movies-row::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.421);
+  border-radius: 10px;
+}
+
+/* bouton coeur dans le modal */
 .action-buttons .favorite-btn {
   position: static;
   top: auto;
@@ -204,4 +147,66 @@ body.sepia-mode .favorite-btn {
 }
 .action-buttons .favorite-btn.active i {
   color: #fff !important;
+}
+
+/* boutons flèche pour carrousel */
+.arrow-btn {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: none;
+  border: none;
+  box-shadow: 0 2px 8px rgba(221,36,118,0.13);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.18s, box-shadow 0.18s;
+  outline: none;
+}
+
+.arrow-btn svg {
+  width: 44px;
+  height: 44px;
+  display: block;
+}
+
+.arrow-btn:focus,
+.arrow-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 4px 16px rgba(221,36,118,0.18);
+}
+
+/* titres de sections et lien "Voir tout" */
+.section-title {
+  padding: 20px 40px 10px;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.view-all {
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+/* numérotation des films top */
+.movie-rank {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  z-index: 2;
 }

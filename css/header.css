@@ -13,12 +13,14 @@ header {
   transition: var(--transition);
 }
 
+/* header - modes */
 body.light-mode header { 
   background: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.85)); 
 }
 body.sepia-mode header { 
   background: linear-gradient(to bottom, rgba(245,241,230,0.95), rgba(245,241,230,0.85)); 
 }
+
 
 .logo {
   font-size: clamp(1.5rem, 4vw, 1.8rem);
@@ -38,43 +40,6 @@ body.sepia-mode header {
   justify-content: flex-end;
 }
 
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 21px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-.menu-toggle span {
-  display: block;
-  height: 3px;
-  width: 100%;
-  background-color: var(--text-light);
-  border-radius: 3px;
-  transition: var(--transition);
-}
-
-body.light-mode .menu-toggle span { 
-  background-color: var(--text-dark); 
-}
-body.sepia-mode .menu-toggle span { 
-  background-color: var(--text-sepia); 
-}
-
-.menu-toggle.active span:nth-child(1) { 
-  transform: rotate(45deg) translate(6px, 6px); 
-}
-.menu-toggle.active span:nth-child(2) { 
-  opacity: 0; 
-}
-.menu-toggle.active span:nth-child(3) { 
-  transform: rotate(-45deg) translate(6px, -6px); 
-}
-
 .nav-main {
   display: flex;
   align-items: center;
@@ -82,6 +47,7 @@ body.sepia-mode .menu-toggle span {
   transition: var(--transition);
 }
 
+/* notification - cloche */
 .notification-bell {
   position: relative;
   display: inline-block;
@@ -90,70 +56,3 @@ body.sepia-mode .menu-toggle span {
   color: var(--primary-color, #e50914);
   font-size: 1.5rem;
 }
-
-.notif-badge {
-  position: absolute;
-  top: -6px;
-  right: -6px;
-  background: #e50914;
-  color: #fff;
-  border-radius: 50%;
-  padding: 2px 6px;
-  font-size: 0.8rem;
-  font-weight: bold;
-  box-shadow: 0 0 4px rgba(0,0,0,0.2);
-  z-index: 2;
-}
-
-.notification-list,
-.notification-item {
-  background: #222;
-  color: #fff;
-  border-radius: 10px;
-}
-
-.notification-list {
-  position: fixed;
-  left: auto;
-  right: 32px;
-  top: 70px;
-  min-width: 260px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-  padding: 0.5rem 0;
-  z-index: 9999;
-  border: 1px solid #333;
-  animation: fadeInNotif 0.3s;
-}
-
-.notification-item {
-  padding: 0.7rem 1rem;
-  border-bottom: 1px solid #333;
-  font-size: 0.98rem;
-  background: none;
-  transition: background 0.2s;
-}
-.notification-item:last-child {
-  border-bottom: none;
-}
-.notification-item.success { 
-  color: #4caf50; 
-}
-.notification-item.error { 
-  color: #e50914; 
-}
-
-.notif-close {
-  background: none;
-  border: none;
-  color: #e50914;
-  font-size: 1.2em;
-  cursor: pointer;
-  padding: 0 4px;
-  transition: color 0.2s;
-}
-.notif-close:hover {
-  color: #fff;
-  background: #e50914;
-  border-radius: 50%;
-}
-

@@ -1,9 +1,4 @@
-body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
+/* Bloc footer principal */
 .site-footer {
     margin-top: auto;
 }
@@ -13,6 +8,7 @@ body {
     padding: 2rem 0;
 }
 
+/* contenu footer */
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
@@ -22,11 +18,10 @@ body {
     padding: 0 1rem;
 }
 
+/* bas de footer */
 .footer-bottom {
     text-align: center;
     margin-top: 2rem;
     padding-top: 1rem;
     border-top: 1px solid var(--border-color);
 }
-
-

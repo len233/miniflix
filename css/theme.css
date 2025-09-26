@@ -1,0 +1,9 @@
+/* mode clair, sombre, sépia */
+body.light-mode { 
+  background: var(--light-bg); 
+  color: var(--text-dark); 
+}
+body.sepia-mode { 
+  background: var(--sepia-bg); 
+  color: var(--text-sepia); 
+}

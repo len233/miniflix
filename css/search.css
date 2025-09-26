@@ -1,3 +1,4 @@
+/* barre de recherche */
 #searchInput {
   background: rgba(255,255,255,0.1);
   color: var(--text-light);
@@ -19,17 +20,13 @@ body.sepia-mode #searchInput {
   color: var(--text-sepia); 
 }
 
+/* focus */
 #searchInput:focus {
   width: 250px;
   background: rgba(255,255,255,0.2);
 }
-body.light-mode #searchInput { 
-  background: rgba(0,0,0,0.1); color: var(--text-dark); 
-}
-body.sepia-mode #searchInput { 
-  background: rgba(92,75,55,0.1); color: var(--text-sepia); 
-}
 
+/* boutons de navigation */
 .nav-btn {
   background: rgba(255,255,255,0.1);
   color: var(--text-light);
@@ -42,7 +39,6 @@ body.sepia-mode #searchInput {
   border-radius: 20px;
   border: none;
   outline: none;
-  
 }
 
 body.light-mode .nav-btn { 
@@ -55,13 +51,13 @@ body.sepia-mode .nav-btn {
 .nav-btn:hover { 
   background: rgba(255,255,255,0.2); 
 }
+
 body.light-mode .nav-btn:hover { 
   background: rgba(0,0,0,0.2); 
 }
 body.sepia-mode .nav-btn:hover { 
   background: rgba(92,75,55,0.2); 
 }
-
 .nav-btn.active { 
   background: var(--primary-color); 
 }
@@ -71,10 +67,12 @@ body.sepia-mode .nav-btn:hover {
   align-items: center; 
 }
 
+/* section résultats de recherche */
 #searchResultsSection {
   margin: 40px 0 0 0;
   padding: 0 40px;
 }
+
 #searchResultsSection .section-title {
   justify-content: flex-start;
   padding-bottom: 10px;
@@ -87,11 +85,7 @@ body.sepia-mode .nav-btn:hover {
   min-height: 200px;
   padding-bottom: 40px;
 }
-#searchResultsRow .loading {
-  grid-column: 1/-1;
-  justify-content: center;
-  align-items: center;
-}
+
 #searchResultsRow p {
   grid-column: 1/-1;
   text-align: center;
@@ -100,13 +94,17 @@ body.sepia-mode .nav-btn:hover {
   font-size: 1.2em;
 }
 
-:root {
-/* Croix effacement barre de recherche */
+#searchResultsRow .loading {
+  grid-column: 1/-1;
+  justify-content: center;
+  align-items: center;
+}
+
+/* wrapper et bouton d’effacement de recherche */
 .search-wrapper {
   position: relative;
   display: inline-block;
-}
-
+} 
 .clear-search-btn {
   position: absolute;
   right: 10px;
@@ -124,16 +122,4 @@ body.sepia-mode .nav-btn:hover {
 }
 .clear-search-btn:hover {
   opacity: 1;
-}
-  --primary-color: #e50914;
-  --dark-bg: #141414;
-  --light-bg: #f5f5f5;
-  --sepia-bg: #f5f1e6;
-  --text-light: #ffffff;
-  --text-dark: #333333;
-  --text-sepia: #5c4b37;
-  --card-bg: #1f1f1f;
-  --card-light: #ffffff;
-  --card-sepia: #e8dfca;
-  --transition: all 0.3s ease;
 }

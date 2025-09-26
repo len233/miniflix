@@ -12,19 +12,9 @@ function toggleFavorite(id, event){
     }
     if(document.getElementById('favoritesPage').classList.contains('active')) displayFavorites();
   }
-  // Notification lors de l'ajout ou retrait d'un favori
-  if (typeof showNotification === 'function') {
-    const movie = allMovies[id];
-    const title = movie ? movie.title : 'Ce film';
-    if (favorites.includes(id)) {
-      showNotification(`Ajouté aux favoris : <b>${title}</b>`, 'success');
-    } else {
-      showNotification(`Retiré des favoris : <b>${title}</b>`, 'info');
-    }
-  }
+  
 }
 
-// Affiche les films favoris sur la page des favoris
 function displayFavorites(){
   const grid=document.getElementById('favoritesGrid');
   if(favorites.length===0){

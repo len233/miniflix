@@ -1,3 +1,4 @@
+/* profil utilisateur */
 .user-profile {
   position: relative;
   display: flex;
@@ -5,10 +6,28 @@
   cursor: pointer;
 }
 
+/* info utilisateur */
+.profile-info {  
+  padding: 15px; 
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+}
+body.light-mode .profile-info {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.profile-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.profile-email {
+  font-size: 0.9em;
+  opacity: 0.7;
+}
+
+/* avatar */
 .profile-avatar {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
   background-color: var(--primary-color);
   display: flex;
   align-items: center;
@@ -16,6 +35,7 @@
   font-weight: bold;
   font-size: 18px;
   color: white;
+  border-radius: 50%;
   border: 2px solid transparent;
   transition: border-color 0.3s;
 }
@@ -23,11 +43,11 @@
 .user-profile:hover .profile-avatar {
   border-color: var(--text-light);    
 }
-
 body.light-mode .user-profile:hover .profile-avatar {
   border-color: var(--text-dark);
 }
 
+/* dropdown */
 .profile-dropdown {
   position: absolute;
   top: 50px;
@@ -42,34 +62,17 @@ body.light-mode .user-profile:hover .profile-avatar {
   transition: var(--transition);
   z-index: 101;
 }
-
 body.light-mode .profile-dropdown {
-  background-color: rgba(255, 255, 255, 0.95); color: var(--text-dark); 
+  background-color: rgba(255, 255, 255, 0.95); 
+  color: var(--text-dark); 
 }
-
 .profile-dropdown.active {
-  opacity: 1; visibility: visible;
+  opacity: 1; 
+  visibility: visible;
   transform: translateY(0);
 }
 
-.profile-info {  
-  padding: 15px; 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
-}
-
-body.light-mode .profile-info {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.profile-name {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-.profile-email {
-  font-size: 0.9em;
-  opacity: 0.7;
-}
-
+/* menu dropdown */
 .profile-menu {
   list-style: none;
   padding: 10px 0;
