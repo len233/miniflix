@@ -19,16 +19,6 @@ document.getElementById('searchInput').addEventListener('input', e => {
   searchTimeout = setTimeout(() => searchMovies(query), 400);
 });
 
-// Bouton pour effacer la recherche
-document.getElementById('clearSearchBtn').addEventListener('click', function(e) {
-  e.preventDefault();
-  const input = document.getElementById('searchInput');
-  input.value = '';
-  this.style.display = 'none';
-  document.getElementById('searchResultsSection').style.display = 'none';
-  document.getElementById('homePage').querySelectorAll('section:not(#searchResultsSection)').forEach(s => s.style.display = '');
-  input.focus();
-});
 
 // recherche de films via l'API
 async function searchMovies(query) {
@@ -52,3 +42,14 @@ async function searchMovies(query) {
     document.getElementById('searchResultsRow').innerHTML = '<p>Erreur lors de la recherche</p>';
   }
 }
+
+
+document.getElementById('clearSearchBtn').addEventListener('click', function(e) {
+  e.preventDefault();
+  const input = document.getElementById('searchInput');
+  input.value = '';
+  this.style.display = 'none';
+  document.getElementById('searchResultsSection').style.display = 'none';
+  document.getElementById('homePage').querySelectorAll('section:not(#searchResultsSection)').forEach(s => s.style.display = '');
+  input.focus();
+});

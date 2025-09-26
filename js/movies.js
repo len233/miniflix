@@ -27,11 +27,11 @@ function loadMoreScifi() {
   fetchCategory({endpoint: '/discover/movie?with_genres=878', rowId: 'scifiMoviesRow', nbPages: 1, pageVar: 'scifiPage', moviesVar: 'scifiMovies'}); 
 }
 fetchCategory({endpoint: '/discover/movie?with_genres=878', rowId: 'scifiMoviesRow', nbPages: 3, pageVar: 'scifiPage', moviesVar: 'scifiMovies'});
+
 // Chargement des films depuis l'API
 async function fetchMovies(endpoint, rowId, pages = 3) { 
   try {
     let allResults = [];
-    // Boucle pour charger plusieurs pages
     for (let page = 1; page <= pages; page++) {
       const url = `${BASE_URL}${endpoint}${endpoint.includes('?') ? '&' : '?'}page=${page}&language=fr-FR`;
       const res = await fetch(url, options);

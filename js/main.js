@@ -1,4 +1,4 @@
-// Lancement du site (chargement initial + écouteurs globaux)
+// Lancement du site 
 fetchMovies("/movie/popular", "topMoviesRow", 3);
 fetchMovies("/discover/movie?with_genres=28", "actionMoviesRow", 3);
 fetchMovies("/discover/movie?with_genres=35,10749", "comedyMoviesRow", 3);
