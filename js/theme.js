@@ -1,4 +1,3 @@
-// Gestion du mode sombre/clair/sepia
 document.getElementById('themeToggle').addEventListener('click', ()=>{
   if (currentTheme === 'dark') {
     document.body.classList.remove('light-mode');

@@ -49,7 +49,7 @@ async function showModal(id){
       const recCard=document.createElement('div'); recCard.className='rec-card';
       recCard.innerHTML=`<img src="${rec.poster_path?IMAGE_BASE_URL+rec.poster_path:'https://via.placeholder.com/150x225?text=Image+non+disponible'}" alt="${rec.title}">
         <div class="rec-card-title">${rec.title}</div>`;
-      recCard.addEventListener('click',()=>{closeModal(); setTimeout(()=>showModal(rec.id),300);});
+      recCard.addEventListener('click',()=>{closeModal(); setTimeout(()=>showModal(rec.id),300);});  
       recRow.appendChild(recCard);
     });
   }catch(e){console.error(e);}

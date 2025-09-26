@@ -94,13 +94,6 @@ function addMoviesToRow(moviesList, rowId) {
   });
 }
 
-// Notification d'un nouveau film 
-function notifyNewMovie(movie) {
-  if (typeof showNotification === 'function') {
-    showNotification(`Nouveau film disponible : ${movie.title}`, 'info');
-  }
-}
-
 // Récupération et affichage des films d'animation (genre TMDB 16)
 function loadMoreAnimation() { fetchCategory({endpoint: '/discover/movie?with_genres=16', rowId: 'animationMoviesRow', nbPages: 1, pageVar: 'animationPage', moviesVar: 'animationMovies'}); }
 fetchCategory({endpoint: '/discover/movie?with_genres=16', rowId: 'animationMoviesRow', nbPages: 3, pageVar: 'animationPage', moviesVar: 'animationMovies'});

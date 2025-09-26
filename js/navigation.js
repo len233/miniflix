@@ -1,4 +1,3 @@
-// Navigation entre les pages
 document.getElementById('homeBtn').addEventListener('click', () => { 
   showPage('homePage'); 
   setActiveButton('homeBtn'); 
