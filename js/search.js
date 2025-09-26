@@ -1,4 +1,4 @@
-// Recherche avec debounce
+// recherche avec debounce
 let searchTimeout;
 
 document.getElementById('searchInput').addEventListener('input', e => {
@@ -30,7 +30,7 @@ document.getElementById('clearSearchBtn').addEventListener('click', function(e) 
   input.focus();
 });
 
-// Recherche de films via l'API
+// recherche de films via l'API
 async function searchMovies(query) {
   try {
     document.getElementById('homePage').querySelectorAll('section:not(#searchResultsSection)').forEach(s => s.style.display = 'none');

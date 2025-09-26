@@ -10,7 +10,4 @@ document.addEventListener('click', function() {
   profileDropdown.classList.remove('active');
 });
 
-// Empêche la fermeture du dropdown lors d'un clic à l'intérieur
-profileDropdown.addEventListener('click', function(e) {
-  e.stopPropagation();
-});
+

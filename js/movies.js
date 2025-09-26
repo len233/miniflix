@@ -1,19 +1,3 @@
-// Flèches de navigation pour le top
-document.addEventListener('DOMContentLoaded', () => {
-  const leftArrow = document.getElementById('topLeftArrow');
-  const rightArrow = document.getElementById('topRightArrow');
-  const topRow = document.getElementById('topMoviesRow');
-  if (leftArrow && rightArrow && topRow) {
-    leftArrow.addEventListener('click', () => {
-      topRow.scrollBy({ left: -220, behavior: 'smooth' });
-    });
-    rightArrow.addEventListener('click', () => {
-      topRow.scrollBy({ left: 220, behavior: 'smooth' });
-    });
-  }
-});
-
-
 function fetchCategory({endpoint, rowId, nbPages = 3, max = null, pageVar, moviesVar}) {
   window[pageVar] = window[pageVar] || 1;
   window[moviesVar] = window[moviesVar] || [];
@@ -67,7 +51,8 @@ async function fetchMovies(endpoint, rowId, pages = 3) {
 function addMoviesToRow(moviesList, rowId) {
   const row = document.getElementById(rowId);
   row.innerHTML = '';
-  moviesList.forEach((movie, idx) => {
+  const list = (rowId === 'topMoviesRow') ? moviesList.slice(0, 10) : moviesList;
+  list.forEach((movie, idx) => {
     allMovies[movie.id] = movie; // Met à jour le cache global
     const isFavorite = favorites.includes(movie.id);
     const card = document.createElement('div');
@@ -94,11 +79,10 @@ function addMoviesToRow(moviesList, rowId) {
   });
 }
 
-// Récupération et affichage des films d'animation (genre TMDB 16)
+
 function loadMoreAnimation() { fetchCategory({endpoint: '/discover/movie?with_genres=16', rowId: 'animationMoviesRow', nbPages: 1, pageVar: 'animationPage', moviesVar: 'animationMovies'}); }
 fetchCategory({endpoint: '/discover/movie?with_genres=16', rowId: 'animationMoviesRow', nbPages: 3, pageVar: 'animationPage', moviesVar: 'animationMovies'});
 
-// Ajout de l'écouteur pour le bouton 'Voir plus' Animation (span comme les autres)
 document.addEventListener('DOMContentLoaded', () => {
   const loadMoreAnimationBtn = document.getElementById('loadMoreAnimationBtn');
   if (loadMoreAnimationBtn) {
@@ -116,5 +100,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const loadMoreScifiBtn = document.getElementById('loadMoreScifiBtn');
   if (loadMoreScifiBtn) {
     loadMoreScifiBtn.addEventListener('click', loadMoreScifi);
+  }
+});
+
+// flèches de navigation pour le top
+document.addEventListener('DOMContentLoaded', () => {
+  const leftArrow = document.getElementById('topLeftArrow');
+  const rightArrow = document.getElementById('topRightArrow');
+  const topRow = document.getElementById('topMoviesRow');
+  if (leftArrow && rightArrow && topRow) {
+    leftArrow.addEventListener('click', () => {
+      topRow.scrollBy({ left: -220, behavior: 'smooth' });
+    });
+    rightArrow.addEventListener('click', () => {
+      topRow.scrollBy({ left: 220, behavior: 'smooth' });
+    });
   }
 });
